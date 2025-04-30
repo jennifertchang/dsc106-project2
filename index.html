@@ -167,16 +167,44 @@
 
         <figure>
           <img src="honest_visualization.png" alt="Honest Visualization" />
-          <figcaption>BRIEF CAPTION HERE.</figcaption>
+
+          <figcaption>This scatterplot shows the relationship between the number of abortion clinics and the 
+            percentage of women who travel out of state for abortion care. The graph indicates that as the 
+            number of abortion clinics increase in a state, the lower the percentage of women who travel 
+            out-of-state for abortion care in that same state. This indicates that an increase in abortion 
+            clinic access improves healthcare equity for women.
+          </figcaption>
         </figure>
 
         <p>Design Decisions and Rationale:</p>
 
         <ul>
-          <li>RATIONALE_1</li>
-          <li>RATIONALE_2</li>
-          <li>RATIONALE_3</li>
+            <li>
+              <strong>Decision 1: Using a logarithmic x-axis scale for the number of clinics<br>Score: 2.0 (Fully Earnest)</strong><br>
+              This decision allows for better visual separation of states with very different numbers of abortion clinics, especially since many states fall below 10 while a few have very high values. Without a log scale, most data would cluster at the low end, making patterns harder to detect. By applying a base-5 logarithmic scale and labeling it clearly, the design preserves interpretability while enhancing trend visibility. Although log scales can sometimes confuse non-technical viewers, the axis is explicitly labeled and aligned with the fitted trendline, maintaining visual integrity.
+            </li>
+          
+            <li>
+              <strong>Decision 2: Categorizing states into “High”, “Medium”, and “Low” access based on clinic count<br>Score: 1.0 (Mostly Earnest)</strong><br>
+              Grouping states into access tiers introduces a level of abstraction that makes the plot more digestible and supports the use of color to enhance storytelling. The cutoff values (10 or greater for High, 3 to 9 for Medium, and less than 3 for Low) are not inherently objective but are based on meaningful distinctions in access. These categories enable the addition of average labels, giving viewers quick insights into how access levels correspond with out-of-state travel. A drawback is that nuanced differences within categories are lost, and viewers may misinterpret them as official thresholds rather than design constructs.
+            </li>
+          
+            <li>
+              <strong>Decision 3: Adding a trendline based on log-transformed data<br>Score: 2.0 (Fully Earnest)</strong><br>
+              Including a trendline reinforces the negative relationship between clinic access and out-of-state travel. The log transformation matches the x-axis scale and accounts for skewed clinic count distribution, producing a better fit than a linear model on raw data. It also visually supports the annotation about the correlation, helping audiences draw conclusions without distorting the data. The choice to use a dashed, neutral-colored line (rather than a bold or colored one) helps ensure the trend doesn’t overshadow the actual data points.
+            </li>
+          
+            <li>
+              <strong>Decision 4: Selective state labeling with custom offsets<br>Score: 1.5 (Earnest)</strong><br>
+              Labeling every state would clutter the chart and obscure data, so labeling only a thoughtful subset, while skipping Michigan and Oregon, was a strategic move to maintain readability. The custom vertical offsets for certain states (e.g., Maine, Minnesota, New Jersey) help avoid label overlap and make the chart visually clean. Adding background boxes behind the text improves legibility against a busy plot. This enhances accessibility for viewers while retaining state-level specificity where it counts. An alternative might have been interactive or hover-over labels, but that wouldn't work for static formats.
+            </li>
+          
+            <li>
+              <strong>Decision 5: Framing annotation with “Strong Negative Correlation” wording<br>Score: 1.0 (Mostly Earnest)</strong><br>
+              The phrase “strong negative correlation” frames the viewer’s interpretation and helps anchor the narrative that access reduces out-of-state travel. While this is directionally correct, the visualization doesn’t display a correlation coefficient or statistical significance measure, which might have justified the “strong” claim more rigorously. It’s persuasive and aids interpretation, but it leans slightly into advocacy by using subjective language that could be misread as a quantitative conclusion. A more neutral phrasing or inclusion of the correlation value would make the claim more robust.
+            </li>
         </ul>
+
       </section>
 
       <section>
@@ -184,16 +212,44 @@
 
         <figure>
           <img src="deceptive_visualization.png" alt="Deceptive Visualization" />
-          <figcaption>BRIEF CAPTION HERE.</figcaption>
+          <figcaption>This scatterplot shows the relationship between the number of abortion clinics and the 
+            percentage of women who travel out of state for abortion care. The graph indicates that as the 
+            number of abortion clinics increase in a state, there is not much of a difference or effect on the 
+            out-of-state travel rates, as seen by the horizontal trendline. This indicates that an increase in abortion 
+            clinic access does not neccessarily improve healthcare equity for women, as there is not much of an effect 
+            on out-of-state travel regardless of an increase in abortion clinic access.</figcaption>
         </figure>
 
         <p>Design Decisions and Rationale:</p>
 
         <ul>
-          <li>RATIONALE_1</li>
-          <li>RATIONALE_2</li>
-          <li>RATIONALE_3</li>
-        </ul>
+            <li>
+              <strong>Decision 1: Manually Set Deceptive Trendline<br>Score: -2.0 (Fully Deceptive)</strong><br>
+              By manually setting a horizontal line at a specific y-value and calling it the line of best fit or trendline, this decision intentionally distorts the narrative. It creates a misleading visual that suggests no correlation between abortion clinic access and out-of-state travel, even if such a relationship exists in the data. This decision distorts the viewer’s interpretation by downplaying any potential patterns, which is a clear example of data manipulation to fit a desired narrative.
+            </li>
+            
+            <li>
+              <strong>Decision 2: Misaligned Y-Axis<br>Score: -1.5 (Deceptive)</strong><br>
+              Altering the y-axis scale can make correlations appear weaker or stronger than they actually are. By using a misaligned y-axis, the data can be skewed to suggest less of a relationship between the number of abortion clinics and the percentage of residents traveling out of state for care. This decision is deceptive because it affects how viewers perceive the strength of the relationship between these variables. However, the effect is not as extreme as other tactics, as a misaligned axis can sometimes be interpreted as a mere design choice.
+            </li>
+          
+            <li>
+              <strong>Decision 3: Ambiguity in Color Coding<br>Score: -1.0 (Deceptive)</strong><br>
+              The use of vague and unclear color coding for different access levels is deceptive because it makes it harder for viewers to interpret the data correctly. Without clear distinctions between categories, the viewer may struggle to understand how clinic access levels correspond to other variables. This decision creates a misleading impression of the data, even though it is less intentionally misleading than other tactics. A clearer and more defined color scheme would have improved the visualization’s transparency.
+            </li>
+          
+            <li>
+              <strong>Decision 4: Jittering Data Points<br>Score: -0.5 (Slightly Deceptive)</strong><br>
+              While jittering is a common practice to avoid over-plotting, its use in this context might obscure real patterns in the data. By adding random noise to the data points, it becomes more difficult to discern the true distribution of clinic access and travel behaviors. This decision slightly undermines the clarity of the visualization and makes the correlation between the variables appear less distinct. The intention here seems to be to smooth out the data points, but it may mislead viewers about the data’s true relationship.
+            </li>
+
+            <li>
+                <strong>Decision 5: Cherry-Picking Certain States to Show<br>Score: -2.0 (Fully Deceptive)</strong><br>
+                By only showcasing a portion of the states, this decision intentionally excludes important data points that could provide a more accurate and balanced picture of the correlation between clinic access and out-of-state travel. By cherry-picking states that fit a desired narrative, the visualization manipulates the viewer’s perception of the data, leading them to draw conclusions based on a selective subset of information. This tactic is fully deceptive because it intentionally hides the full scope of the data and misleads viewers by giving an incomplete picture.
+              </li>
+          
+          </ul>
+
       </section>
 
       <section>
